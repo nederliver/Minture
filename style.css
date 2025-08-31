@@ -44,10 +44,10 @@
   padding: var(--space-sm) var(--space);
   background: rgba(21, 19, 21, 0.65); /* glassy */
   border-radius: calc(var(--radius) + 2px);
-  box-shadow: 0 10px 28px rgba(3, 3, 3, 0.7);
+  box-shadow: 0 10px 28px var(--charcoal);
   backdrop-filter: blur(12px) saturate(120%);
   -webkit-backdrop-filter: blur(12px) saturate(120%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 2px solid color-mix(in srgb, var(--highlight-high) 5%, transparent);
   transition: box-shadow .25s ease, transform .25s ease;
   overflow: hidden;
   box-sizing: border-box;
@@ -81,7 +81,6 @@
 
 .circle {
   display: inline-flex;
-  gap: 6px;
   padding-left: 6px;
 }
 
@@ -92,7 +91,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.45) inset;
+  box-shadow: 0 1px 2px var(--charcoal) inset;
 }
 
 /* Named color helpers */
@@ -125,10 +124,10 @@
   margin: 0 10px 13px;
   padding: var(--space-lg);
   border-radius: var(--radius);
-  background: rgba(28, 25, 28, 0.55); /* glassy */
+  background: var(--overlay-0);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 2px solid color-mix(in srgb, var(--highlight-high) 5%, transparent);
   box-sizing: border-box;
 }
 
@@ -157,7 +156,7 @@
   transition: background .12s ease, backdrop-filter .2s ease;
 }
 .swatch:hover {
-  background: rgba(35, 31, 35, 0.65); /* glass hover */
+  background: var(--overlay-1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -179,7 +178,7 @@
   height: 44px;
   border-radius: 6px;
   flex: 0 0 44px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.45);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--charcoal) 40%, transparent);
 }
 
 /* Name */
@@ -218,8 +217,9 @@
   padding: 6px 10px;
   min-width: 64px;
   border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.06);
-  background: rgba(35, 31, 35, 0.55); /* glass button */
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--charcoal) 5%, transparent);
+  border: 2px solid color-mix(in srgb, var(--highlight-high) 5%, transparent);
+  background: var(--overlay-1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: var(--text);
@@ -242,17 +242,6 @@
   cursor: default;
 }
 
-/* Inline value label (hex/rgb) */
-.value-label {
-  color: var(--subtle);
-  font-size: .9rem;
-  letter-spacing: -0.01em;
-  margin-right: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 /* Extra small screen tweaks */
 @media (max-width: 480px) {
   .swatch-left { min-width: 120px; }
@@ -273,6 +262,16 @@
   margin-top: 30px;
   margin-bottom: -20px;
   color: var(--mute);
+}
+.footer-link {
+  color: var(--leaf);
+  text-decoration: none;
+}
+.page-description {
+  color: var(--subtle);
+  font-size: 1.2rem;
+  margin-top: -14px;
+  margin-bottom: 20px;
 }
 /* ensure description/footer text centers as well */
 .page-description,
