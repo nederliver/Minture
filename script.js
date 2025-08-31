@@ -4,8 +4,8 @@
     kofiWidgetOverlay.draw('nederliver', {
     'type': 'floating-chat',
     'floating-chat.donateButton.text': 'Donate',
-    'floating-chat.donateButton.background-color': '#1C191C',
-    'floating-chat.donateButton.text-color': '#FBFEFD',
+    'floating-chat.donateButton.background-color': 'var(--1)',
+    'floating-chat.donateButton.text-color': '#F0E4F6',
     });
 
   
@@ -17,9 +17,7 @@
     '--overlay-1',  
     '--overlay-2',  
     '--overlay-3',
-    '--highlight-low',
-    '--highlight-med',
-    '--highlight-high',
+    '--highlight',
     '--mute',
     '--subtle',
     '--text',
