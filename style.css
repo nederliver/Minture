@@ -1,0 +1,285 @@
+:root{
+  --charcoal: #080708;
+
+  --base: #0f0d0f;
+  --surface: #151315;
+  --overlay-0: #1c191c;
+  --overlay-1: #231f23;
+  --overlay-2: #2a252a;
+  --overlay-3: #302b30;
+
+  --highlight-low: #494149;
+  --highlight-med: #615861;
+  --highlight-high: #796e79;
+
+  --text: #fbfefd;
+  --subtle: #b6b8b7;
+  --mute: #757676;
+
+  --gold: #e4b77d;
+  --salmon: #eb7777;
+  --leaf: #90cfa6;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space: 1rem;         
+  --space-lg: 1.5rem;
+  --radius: 8px;
+  --card-max: 900px;
+
+  --mono: 'Outfit', system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+  font-family: var(--mono);
+  background: var(--base);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.35;
+  padding-bottom: 30px;
+}
+
+/* card base */
+.card {
+  width: min(60%, var(--card-max));
+  max-width: var(--card-max);
+  margin: 24px auto;
+  background-color: var(--surface);
+  border-radius: calc(var(--radius) + 2px);
+  z-index: 1;
+  box-shadow: 0 10px 22px rgba(3,3,3,0.6);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+  padding: var(--space-sm) var(--space); /* gentle interior padding */
+  box-sizing: border-box;
+}
+.minture {
+  justify-items: center;
+}
+
+.page-description {
+    font-size: 1.5rem;
+    color: var(--subtle);
+}
+.page-title {
+    font-size: 8rem;
+    font-weight: bold;
+    background: linear-gradient(
+        40deg,
+        var(--gold),
+        var(--leaf),
+        var(--gold)
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wave 10s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* top bar (mac-like circles + title) */
+.top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 8px;
+}
+
+/* left circles container spacing */
+.circle {
+  display: inline-flex;
+  gap: 6px;
+  padding-left: 6px;
+}
+
+/* individual circle */
+.circle2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.45) inset;
+}
+
+/* named color helpers */
+.red    { background-color: var(--salmon); }
+.yellow { background-color: var(--gold);   }
+.leaf  { background-color: var(--leaf);  }
+
+.header {
+  margin: 0;
+  padding-left: 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* title */
+#title2 {
+  color: var(--text);
+  padding-left: 22px;
+  font-size: 1rem; /* ~16px */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* panel inside card */
+.colors-background {
+  border-radius: var(--radius);
+  background: var(--overlay-0);
+  padding: var(--space-lg);
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: 13px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Palette grid inside card */
+.palette-grid {
+  display: grid;
+  gap: 12px;
+  box-sizing: border-box;
+  align-items: start;
+}
+
+/* small screens: stack to 1 column */
+@media (max-width: 720px) {
+  .palette-grid { grid-template-columns: 1fr; }
+  .card { padding: var(--space); }
+}
+
+/* individual swatch row */
+.swatch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: background 0.12s ease;
+}
+
+/* subtle hover feedback for each swatch */
+.swatch:hover {
+  background: var(--overlay-1)
+}
+
+/* Left column that holds name above preview */
+.swatch-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* fixed invalid value 'flex-e' */
+  gap: 8px;
+  box-sizing: border-box;
+  padding: 4px 0;
+  min-width: 160px;       /* keeps layout stable without forcing overflow */
+}
+
+/* color preview block */
+.swatch-preview {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  flex: 0 0 44px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.45);
+}
+
+/* name (moved above preview) */
+.swatch-name {
+  color: var(--text);
+  font-size: 1rem;   /* ~16px, readable */
+  margin: 0;
+  font-weight: 600;
+}
+.swatch-name::first-letter {
+   text-transform: uppercase;
+}
+/* values / right column */
+.swatch-values {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 1 1 auto;    /* take available space */
+  box-sizing: border-box;
+}
+
+/* copy buttons container */
+.swatch-btns {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;          /* removed weird negative margin */
+}
+
+/* copy button styling */
+.copy-btn {
+  border: 1px solid rgba(255,255,255,0.04);
+  background: transparent;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  background-color: var(--overlay-1);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--mono);
+  color: var(--text);
+  transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease;
+  min-width: 64px;                 /* flexible but prevents collapse */
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.copy-btn:active { transform: translateY(1px); }
+
+/* soft hover tint using color-mix */
+.copy-btn:hover {
+  background: color-mix(in srgb, var(--leaf) 8%, transparent);
+  color: var(--leaf);
+}
+
+/* slightly dimmed when disabled */
+.copy-btn[disabled] {
+  color: var(--leaf);
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* utility: subtle inline value label (for hex/rgb) */
+.value-label {
+  color: var(--subtle);
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  margin-right: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* small responsive adjustments */
+@media (max-width: 480px) {
+  .swatch-left { min-width: 120px; }
+  .swatch-preview { width: 36px; height: 36px; flex: 0 0 36px; }
+  #title2 { font-size: 0.95rem; }
+  .copy-btn { padding: 6px 8px; min-width: 56px; font-size: 0.85rem; }
+}
+
+.footer {
+    margin-top: 50px;
+    color: var(--mute);
+}
